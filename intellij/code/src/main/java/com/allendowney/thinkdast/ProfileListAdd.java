@@ -14,10 +14,10 @@ public class ProfileListAdd {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		profileArrayListAddEnd();
+		//profileArrayListAddEnd();
 		//profileArrayListAddBeginning();
 		//profileLinkedListAddBeginning();
-		//profileLinkedListAddEnd();
+		profileLinkedListAddEnd();
 	}
 
 	/**
@@ -47,6 +47,24 @@ public class ProfileListAdd {
 	 */
 	public static void profileArrayListAddBeginning() {
 		// TODO: FILL THIS IN!
+		Timeable timeable = new Timeable() {
+			List<String> list;
+
+			@Override
+			public void setup(int n) {
+				list = new ArrayList<String>();
+			}
+
+			@Override
+			public void timeMe(int n) {
+				for (int i=0; i<n; i++) {
+					list.add(0, "a string");
+				}
+			}
+		};
+		int startN = 4000;
+		int endMills = 10000;
+		runProfiler("ArrayList add beginning", timeable, startN, endMills);
 	}
 
 	/**
@@ -54,6 +72,24 @@ public class ProfileListAdd {
 	 */
 	public static void profileLinkedListAddBeginning() {
 		// TODO: FILL THIS IN!
+		Timeable timeable = new Timeable() {
+			List<String> list;
+
+			@Override
+			public void setup(int n) {
+				list = new LinkedList<String>();
+			}
+
+			@Override
+			public void timeMe(int n) {
+				for (int i=0; i<n; i++) {
+					list.add(0, "a string");
+				}
+			}
+		};
+		int startN = 128000;
+		int endMillis = 2000;
+		runProfiler("LinkedList add beginning", timeable, startN, endMillis);
 	}
 
 	/**
@@ -61,6 +97,24 @@ public class ProfileListAdd {
 	 */
 	public static void profileLinkedListAddEnd() {
 		// TODO: FILL THIS IN!
+		Timeable timeable = new Timeable() {
+			List<String> list;
+
+			@Override
+			public void setup(int n) {
+				list = new LinkedList<String>();
+			}
+
+			@Override
+			public void timeMe(int n) {
+				for (int i=0; i<n; i++) {
+					list.add("a string");
+				}
+			}
+		};
+		int startN = 64000;
+		int endMillis = 1000;
+		runProfiler("LinkedList add end", timeable, startN, endMillis);
 	}
 
 	/**
